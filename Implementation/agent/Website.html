@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jupyter Notebook Website</title>
+</head>
+<body>
+  <h1>Jupyter Notebook Website</h1>
+  <select id="notebook-selector">
+    <option value="C:/Users/harih/Documents/College-AIE/Sem 4/Algorithms/Project/Codes/Final/agent/2.moving-average-agent.ipynb">Method 1</option>
+    <option value="C:/Users/harih/Documents/College-AIE/Sem 4/Algorithms/Project/Codes/Final/agent/2a.moving-average-crossover agent .ipynb">Method 2</option>
+    <option value="C:/Users/harih/Documents/College-AIE/Sem 4/Algorithms/Project/Codes/Final/agent/2b.moving-average-weigthed agent.ipynb">Method 3</option>
+    <option value="C:/Users/harih/Documents/College-AIE/Sem 4/Algorithms/Project/Codes/Final/agent/2c. weigthed moving-average-agent crossover.ipynb">Method 4</option>
+  </select>
+  <button id="execute-button">Execute</button>
+  <script>
+    var notebookSelector = document.getElementById("notebook-selector");
+    var executeButton = document.getElementById("execute-button");
+    executeButton.addEventListener("click", function() {
+      var notebookPath = notebookSelector.value;
+      var notebook = Jupyter.Notebook.load(notebookPath);
+      notebook.execute();
+      document.getElementById("output").innerHTML = "";
+      var output = notebook.getOutput();
+      document.getElementById("output").innerHTML = output;
+    });
+  </script>
+  <div id="output"></div>
+</body>
+</html>
